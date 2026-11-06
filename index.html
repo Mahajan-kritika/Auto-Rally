@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Auto Rally</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="game-shell">
+      <canvas id="gameCanvas" width="420" height="760" aria-label="Auto Rally game canvas"></canvas>
+
+      <div id="hud" class="hud hidden" aria-live="polite">
+        <div class="hud-top">
+          <div class="hud-box"><span class="label">LAP</span><span id="lapValue">1/3</span></div>
+          <div class="hud-box"><span class="label">TIME</span><span id="timeValue">00:00</span></div>
+          <div class="hud-box"><span class="label">COINS</span><span id="coinValue">0</span></div>
+        </div>
+        <div class="hud-bottom">
+          <div class="hud-box small"><span class="label">SPEED</span><span id="speedValue">0</span></div>
+          <div class="hud-box small"><span class="label">BOOST</span><span id="boostValue">OFF</span></div>
+          <div class="hud-box small"><span class="label">SHIELD</span><span id="shieldValue">OFF</span></div>
+        </div>
+      </div>
+
+      <div id="countdownOverlay" class="countdown-overlay hidden">3</div>
+
+      <div id="toast" class="toast hidden"></div>
+
+      <section id="startScreen" class="panel start-screen">
+        <div class="title-wrap">
+          <p class="eyebrow">ARCADE RACING</p>
+          <h1>AUTO RALLY</h1>
+        </div>
+
+        <div class="auto-illustration" aria-hidden="true">
+          <div class="rickshaw-body">
+            <div class="cabin"></div>
+            <div class="window"></div>
+            <div class="door"></div>
+            <div class="light"></div>
+            <div class="wheel wheel-left"></div>
+            <div class="wheel wheel-right"></div>
+          </div>
+        </div>
+
+        <div class="ready-text">Ready, Driver?</div>
+
+        <button id="playButton" class="primary-button">Play</button>
+
+        <div class="stats-row">
+          <div class="info-pill"><span>Best Time</span><strong id="bestTimeValue">--:--</strong></div>
+          <div class="info-pill"><span>Total Coins</span><strong id="totalCoinsValue">0</strong></div>
+        </div>
+
+        <button id="soundToggleButton" class="secondary-button" type="button">Sound: ON</button>
+
+        <div class="instructions">
+          <p>Arrow Left / A: Steer left</p>
+          <p>Arrow Right / D: Steer right</p>
+          <p>Arrow Up / W: Accelerate</p>
+          <p>Arrow Down / S: Brake</p>
+        </div>
+      </section>
+
+      <section id="resultScreen" class="panel result-screen hidden">
+        <h2>Race Complete</h2>
+        <div class="results-grid">
+          <div class="result-item"><span>Final Time</span><strong id="resultTime">00:00</strong></div>
+          <div class="result-item"><span>Best Time</span><strong id="resultBestTime">00:00</strong></div>
+          <div class="result-item"><span>Coins</span><strong id="resultCoins">0</strong></div>
+          <div class="result-item"><span>Power-ups</span><strong id="resultPowerups">0</strong></div>
+          <div class="result-item"><span>Collisions</span><strong id="resultCollisions">0</strong></div>
+          <div class="result-item"><span>Record</span><strong id="resultRecord">-</strong></div>
+        </div>
+        <div id="newBestMarker" class="new-best hidden">NEW BEST TIME</div>
+        <div class="result-buttons">
+          <button id="resultPlayButton" class="primary-button">Race Again</button>
+          <button id="homeButton" class="secondary-button" type="button">Home</button>
+        </div>
+      </section>
+
+      <div id="touchControls" class="touch-controls hidden" aria-label="Touch controls">
+        <div class="touch-row">
+          <button class="control-btn" type="button" data-control="left">◀</button>
+          <button class="control-btn" type="button" data-control="right">▶</button>
+        </div>
+        <div class="touch-row">
+          <button class="control-btn accent" type="button" data-control="accelerate">▲</button>
+          <button class="control-btn accent danger" type="button" data-control="brake">▼</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
